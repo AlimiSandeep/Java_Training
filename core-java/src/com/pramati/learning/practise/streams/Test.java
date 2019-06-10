@@ -1,5 +1,7 @@
 package com.pramati.learning.practise.streams;
 
 public class Test {
-
+public static void main(String[] args) {
+	
+}
 }
