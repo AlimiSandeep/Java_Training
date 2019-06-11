@@ -1,40 +1,20 @@
 package com.pramati.assignments;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Album {
-	List<Song> album1 = new ArrayList<>();
-	List<Song> album2 = new ArrayList<>();
-	Map<Integer, List<Song>> map = new HashMap<>();
+	Set<Song> songs = new HashSet<>();
 
-	public Album() {
-
-		album1.add(new Song("All we Know", 150));
-		album1.add(new Song("Closer", 180));
-		album1.add(new Song("Blank space", 300));
-
-		album2.add(new Song("Shape of u", 240));
-		album2.add(new Song("Beautiful", 180));
-		album2.add(new Song("Faded", 270));
-
-		map.put(1, album1);
-		map.put(2, album2);
-
+	public Set<Song> getSongs() {
+		return songs;
 	}
 
-	public List<Song> getAlbum1() {
-		return album1;
+	public void add(Song song) {
+		songs.add(song);
 	}
 
-	public List<Song> getAlbum2() {
-		return album2;
+	public void remove(Song song) {
+		songs.remove(song);
 	}
-
-	public Map<Integer, List<Song>> getMap() {
-		return map;
-	}
-
 }

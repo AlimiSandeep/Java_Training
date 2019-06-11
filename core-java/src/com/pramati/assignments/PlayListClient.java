@@ -3,7 +3,7 @@ package com.pramati.assignments;
 import java.util.ArrayList;
 
 import java.util.List;
-import java.util.Map;
+
 import java.util.Scanner;
 
 public class PlayListClient {
@@ -12,31 +12,46 @@ public class PlayListClient {
 	static Scanner in = new Scanner(System.in);
 
 	public void startUp() {
-		PlayList obj = new PlayList();
+		Album album1 = new Album();
+		Album album2 = new Album();
+
+		album1.add(new Song("All we Know", 150));
+		album1.add(new Song("Closer", 180));
+		album1.add(new Song("Blank space", 300));
+
+		album2.add(new Song("Shape of u", 240));
+		album2.add(new Song("Beautiful", 180));
+		album2.add(new Song("Faded", 270));
+
+		PlayList playList = new PlayList();
+		playList.add(album1.getSongs());
 
 		char option;
 
 		do {
-			System.out.println("1-Create playlist\n2-Display songs in playlist\n3-Add a song to playlist");
+			System.out.println(
+					"1-Display songs in playlist\n2-Forward\n3-Backward\n4-Current song\n5-Remove current song");
 			int menu = in.nextInt();
 			switch (menu) {
 			case 1:
-				char choice;
-
-				do {
-
-					doOperation();
-					System.out.println("Continue to add to playlist ?[y/n]:");
-					choice = in.next().charAt(0);
-				} while (choice == 'y');
-
+				playList.display();
 				break;
 			case 2:
-				obj.display(playlist);
+				System.out.println(playList.nextSong());
 				break;
-
 			case 3:
-				obj.add();
+				Song previousSong=playList.previousSong();
+				if (previousSong == null)
+					System.out.println("No songs backward.");
+				else
+					System.out.println(previousSong);
+				break;
+			case 4:
+				System.out.println(playList.currentSong());
+				break;
+			case 5:
+				if(playList.remove())
+					System.out.println("Successfully removed");
 				break;
 
 			default:
@@ -50,35 +65,8 @@ public class PlayListClient {
 
 	}
 
-	public static void doOperation() {
-
-		Album album = new Album();
-
-		int pos, x;
-
-		System.out.println("Enter the album ");
-		System.out.println("Album-1\tAlbum-2");
-		x = in.nextInt();
-		Map<Integer, List<Song>> map = album.getMap();
-		List<Song> temp = map.get(x);
-		int i = 1;
-		for (Song songs : temp) {
-			System.out.println(i + " " + songs.getTitle());
-			i++;
-		}
-		System.out.println("Enter the song to add:");
-		pos = in.nextInt() - 1;
-		Song song = temp.get(pos);
-		if (!playlist.contains(song)) {
-			playlist.add(song);
-			System.out.println(song.getTitle() + " added to playlist");
-		} else
-			System.out.println("Song already added");
-
-	}
-
 	public static void main(String[] args) {
-PlayListClient playListClient = new PlayListClient();
-playListClient.startUp();
+		PlayListClient playListClient = new PlayListClient();
+		playListClient.startUp();
 	}
 }
