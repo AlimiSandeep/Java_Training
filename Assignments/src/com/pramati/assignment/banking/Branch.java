@@ -91,7 +91,7 @@ public class Branch {
 
 			}
 
-			System.out.println("Do you want to perform another opration:[y/n]");
+			System.out.println("Do you want to perform another operation:[y/n]");
 			choice = in.next().charAt(0);
 
 		} while (choice == 'y');

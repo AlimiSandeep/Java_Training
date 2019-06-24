@@ -1,14 +1,9 @@
 package com.pramati.assignment.playlist;
 
-import java.util.ArrayList;
-
-import java.util.List;
-
 import java.util.Scanner;
 
 public class PlayListClient {
 
-	static List<Song> playlist = new ArrayList<>();
 	static Scanner in = new Scanner(System.in);
 
 	public void startUp() {
@@ -40,7 +35,7 @@ public class PlayListClient {
 				System.out.println(playList.nextSong());
 				break;
 			case 3:
-				Song previousSong=playList.previousSong();
+				Song previousSong = playList.previousSong();
 				if (previousSong == null)
 					System.out.println("No songs backward.");
 				else
@@ -50,7 +45,7 @@ public class PlayListClient {
 				System.out.println(playList.currentSong());
 				break;
 			case 5:
-				if(playList.remove())
+				if (playList.remove())
 					System.out.println("Successfully removed");
 				break;
 
