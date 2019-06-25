@@ -16,6 +16,30 @@ public class Branch {
 		map.put("Tom", new Customer("Tom"));
 	}
 
+	public void transfer(Customer customer, double amount) {
+
+		Account account = customer.getAcnt();
+		System.out.println("Enter name of the customer u want to transfer");
+		map.keySet().stream().filter(e -> e != customer.getName()).forEach(e -> System.out.print(e + "\t"));
+		System.out.println();
+		Customer toDeposit = map.get(in.next());
+		Account toDepositAcc = toDeposit.getAcnt();
+		if (account.withdraw(amount)) {
+			Transaction transaction = new Transaction(customer.getName(), toDeposit.getName(), amount, "transfer");
+			account.recordTransaction(transaction);
+
+			toDepositAcc.deposit(amount);
+			Transaction transaction2 = new Transaction(customer.getName(), toDeposit.getName(), amount, "transfer");
+			toDepositAcc.recordTransaction(transaction2);
+		}
+
+		else {
+			System.out.println("Insufficient balance for transfer");
+			System.out.println("Your bank balance is :" + account.getBalance());
+		}
+
+	}
+
 	public static void deposit(Customer customer, double amount) {
 
 		System.out.println("1-Deposit to self\n2-Deposit to other");
@@ -30,6 +54,7 @@ public class Branch {
 		case 2:
 			System.out.println("Enter name of the customer u want to deposit");
 			map.keySet().stream().filter(e -> e != customer.getName()).forEach(e -> System.out.print(e + "\t"));
+			System.out.println();
 			Customer toDeposit = map.get(in.next());
 			Account toDepositAcc = toDeposit.getAcnt();
 			toDepositAcc.deposit(amount);
@@ -52,8 +77,10 @@ public class Branch {
 			account.recordTransaction(transaction);
 		}
 
-		else
+		else {
 			System.out.println("Insufficient balance");
+			System.out.println("Your bank balance is :" + account.getBalance());
+		}
 
 	}
 
@@ -63,7 +90,7 @@ public class Branch {
 		char choice;
 		do {
 
-			System.out.println("1-Deposit\n2-Withdraw\n3-Display balance\n4-Transaction History");
+			System.out.println("1-Deposit\n2-Withdraw\n3-Display balance\n4-Transfer\n5-Transaction History");
 			int operation = in.nextInt();
 			switch (operation) {
 			case 1:
@@ -81,8 +108,12 @@ public class Branch {
 			case 3:
 				System.out.println(acnt.getBalance());
 				break;
-
 			case 4:
+				System.out.println("Enter the amount to transfer");
+				double amount = in.nextDouble();
+				transfer(customer, amount);
+				break;
+			case 5:
 				acnt.getList().stream().forEach(System.out::println);
 				break;
 
