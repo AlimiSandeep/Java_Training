@@ -1,17 +1,22 @@
 import java.io.IOException;
 import java.io.PrintWriter;
-
-import javax.servlet.GenericServlet;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-public class ServletTest1 extends GenericServlet {
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class ServletTest1 extends HttpServlet {
 
 	@Override
-	public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {
-		PrintWriter out=res.getWriter();
-		out.println("<h1>Welcome to servlets</h1>");
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		PrintWriter out = resp.getWriter();
+		String uname = (String) req.getParameter("login");
+		String pwd = (String) req.getParameter("pwd");
 		
+		if (uname.equals(pwd))
+			out.println("Successfully logged");
+
 	}
 
 }
