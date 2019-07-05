@@ -52,7 +52,8 @@ public class CallableInterfaceDemo {
 		Future<Double> futureDouble = executor.submit(new DoubleMul(6.5));
 		System.out.println("IntegerSum has returned " + futureSum.get());
 		System.out.println("DoubleMul has returned " + futureDouble.get());
-		
+
 		executor.shutdown();
+
 	}
 }
