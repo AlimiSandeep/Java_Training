@@ -5,17 +5,13 @@
 	id="WebApp_ID" version="3.0">
 	<display-name>ServletsSample</display-name>
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
-		<welcome-file>index.htm</welcome-file>
-		<welcome-file>index.jsp</welcome-file>
-		<welcome-file>default.html</welcome-file>
-		<welcome-file>default.htm</welcome-file>
-		<welcome-file>default.jsp</welcome-file>
+		<welcome-file>login.html</welcome-file>		
+		<welcome-file>index.html</welcome-file>		
 	</welcome-file-list>
 
 	<servlet>
 		<servlet-name>Test1</servlet-name>
-		<servlet-class>ServletTest1</servlet-class>
+		<servlet-class>com.pramati.learning.servlets.ServletTest1</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -25,7 +21,7 @@
 
 	<servlet>
 		<servlet-name>Test2</servlet-name>
-		<servlet-class>DBConnectionUsingServletConfig</servlet-class>
+		<servlet-class>com.pramati.learning.servlets.DBConnectionUsingServletConfig</servlet-class>
 		<init-param>
 			<param-name>driver</param-name>
 			<param-value>com.mysql.jdbc.Driver</param-value>
@@ -48,5 +44,28 @@
 	<servlet-mapping>
 		<servlet-name>Test2</servlet-name>
 		<url-pattern>/DBservlet</url-pattern>
+	</servlet-mapping>
+	
+	
+	
+	<servlet>
+	<servlet-name>servlet1</servlet-name>
+	<servlet-class>com.pramati.learning.servlets.CookieServlet1</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	<servlet-name>servlet1</servlet-name>
+	<url-pattern>/servlet1</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+	<servlet-name>servlet2</servlet-name>
+	<servlet-class>com.pramati.learning.servlets.CookieServlet2</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	<servlet-name>servlet2</servlet-name>
+	<url-pattern>/servlet2</url-pattern>
 	</servlet-mapping>
 </web-app>

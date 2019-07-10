@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Student Form</title>
+</head>
+<style>
+div{
+text-align: center;
+}
+
+#btn{
+width:100px;
+margin: 0 auto;
+}
+table {
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+ 
+}
+
+td {
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+}
+</style>
+<body>
+<form action="studentinfo" method="post">
+<div>
+<table border=1>
+<tr>
+<td>Enter your name:</td>
+<td><input type="text" name="name"/></td>
+</tr>
+
+
+<tr>
+<td>Enter your age:</td>
+<td><input type="text" name="age"/></td>
+</tr>
+
+
+<tr>
+<td>Enter your location:</td>
+<td><input type="text" name="location"/></td>
+</tr>
+
+<tr>
+<td><input type="submit" value="Submit" id="btn"/></td>
+<td><input type="reset" value="Reset" id="btn"/></td>
+</tr>
+</table>
+</div>
+</form>
+</body>
+
+</body>
+</html>

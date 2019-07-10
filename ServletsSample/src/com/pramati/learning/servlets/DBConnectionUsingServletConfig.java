@@ -1,11 +1,11 @@
 package com.pramati.learning.servlets;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 import javax.servlet.ServletConfig;
@@ -34,22 +34,14 @@ public class DBConnectionUsingServletConfig extends HttpServlet {
 			Connection conn = DriverManager.getConnection(url, uname, passwd);
 			PreparedStatement ps = conn.prepareStatement("select song_name,song_duration,singer from songs");
 			ResultSet rs = ps.executeQuery();
-			ResultSetMetaData rsmd = rs.getMetaData();
-			
+
 			pw.println("<table border=2 align=center>");
-			pw.println("\n"
-					+ "<thead>\n" + 
-					"<td>Song Name</td>\n" + 
-					"<td>Duration</td>\n" + 
-					"<td>Singer</td>\n" + 
-					"</thead>");
+			pw.println("\n" + "<thead>\n" + "<td>Song Name</td>\n" + "<td>Duration</td>\n" + "<td>Singer</td>\n"
+					+ "</thead>");
 			while (rs.next()) {
-				pw.println("\n" + 
-						"<tr>\n" + 
-						"<td>"+rs.getString("song_name")+"</td>\n" + 
-						"<td>"+rs.getString("song_duration")+"</td>\n" + 
-						"<td>"+rs.getString("singer")+"</td>\n" + 
-						"</tr>");
+				pw.println("\n" + "<tr>\n" + "<td>" + rs.getString("song_name") + "</td>\n" + "<td>"
+						+ rs.getString("song_duration") + "</td>\n" + "<td>" + rs.getString("singer") + "</td>\n"
+						+ "</tr>");
 
 			}
 			pw.println("</table>");

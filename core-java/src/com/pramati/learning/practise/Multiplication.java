@@ -2,9 +2,9 @@ package com.pramati.learning.practise;
 
 public class Multiplication {
 	public static void main(String[] args) {
-		String num1 = "256";
+		String num1 = "123";
 		String tempnum1 = num1;
-		String num2 = "987";
+		String num2 = "456";
 		String tempnum2 = num2;
 
 		// Check condition if one string is negative
