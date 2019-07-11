@@ -68,4 +68,25 @@
 	<servlet-name>servlet2</servlet-name>
 	<url-pattern>/servlet2</url-pattern>
 	</servlet-mapping>
+	
+	
+	
+	<servlet>
+	<servlet-name>Hiddenservlet1</servlet-name>
+	<servlet-class>com.pramati.learning.servlets.HiddenServlet1</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>Hiddenservlet1</servlet-name>
+	<url-pattern>/hiddenservlet1</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+	<servlet-name>Hiddenservlet2</servlet-name>
+	<servlet-class>com.pramati.learning.servlets.HiddenServlet2</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>Hiddenservlet2</servlet-name>
+	<url-pattern>/hiddenservlet2</url-pattern>
+	</servlet-mapping>
 </web-app>
