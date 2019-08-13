@@ -1,4 +1,4 @@
-package com.pramati.bot;
+package com.pramati.bot.config;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

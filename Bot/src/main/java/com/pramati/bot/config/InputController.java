@@ -1,28 +1,29 @@
-package com.pramati.bot;
+package com.pramati.bot.config;
 
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.pramati.service.DateService;
-import com.pramati.service.EventInsertionService;
+import com.pramati.bot.service.DateService;
+import com.pramati.bot.service.EventInsertionService;
 
-@Controller
+@RestController
 public class InputController {
 
 	@Autowired
-	DateService ds;
-	
-	@Autowired
 	EventInsertionService eventService;
-	
-	@RequestMapping("/parseDate")
+
+	@Autowired
+	DateService ds;
+
+	@RequestMapping(value = "/parseDate", method = RequestMethod.POST)
 	public ModelAndView getDate(@RequestParam("userInput") String message) throws ParseException, IOException {
 
 		String startDate = ds.getStartDate(message);
@@ -30,13 +31,11 @@ public class InputController {
 
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("result");
-		
-		
-		
-		boolean flag=false;
-		flag=eventService.createEvent(startDate, endDate);
-		List<String> availableSlots=eventService.suggestEvents();
-		
+
+		boolean flag = false;
+		flag = eventService.createEvent(startDate, endDate);
+		List<String> availableSlots = eventService.suggestEvents();
+
 		mv.addObject("flag", flag);
 		mv.addObject("list", availableSlots);
 

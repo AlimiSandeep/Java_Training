@@ -1,4 +1,4 @@
-package com.pramati.service;
+package com.pramati.demo.service;
 
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.pipeline.*;
@@ -14,10 +14,10 @@ import java.util.*;
 import java.text.ParseException;
 
 import org.apache.commons.lang3.time.DateUtils;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 
-@Component
+@Service
 public class DateService {
 
 	public String getStartDate(String message) {

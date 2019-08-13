@@ -1,4 +1,4 @@
-package com.pramati.service;
+package com.pramati.bot.service;
 
 import com.google.api.client.util.DateTime;
 import com.google.api.services.calendar.Calendar;
@@ -15,13 +15,15 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-@Component
+@Service
 public class EventInsertionService {
 
-	@Autowired
+//	@Autowired
+//	private static CalendarAPI api;
 	private static Calendar service;
+
 	private static DateTime now = new DateTime(System.currentTimeMillis());
 
 	static {
@@ -65,6 +67,7 @@ public class EventInsertionService {
 				String eventDate = event.getStart().getDateTime().toString();
 				if (event.getSummary().equals("NoAppointment") && eventDate.equals(startDate)) {
 					updateEvent(event);
+
 					return true;
 				}
 
@@ -74,6 +77,7 @@ public class EventInsertionService {
 	}
 
 	public void updateEvent(Event event) throws IOException {
+
 		event.setSummary("Appointment");
 		service.events().update("primary", event.getId(), event).execute();
 
@@ -99,6 +103,7 @@ public class EventInsertionService {
 	}
 
 	public List<Event> getEvents() throws IOException {
+
 		Events events = service.events().list("sandeep.alimi@imaginea.com").setMaxResults(10).setTimeMin(now)
 				.setOrderBy("startTime").setSingleEvents(true).execute();
 		List<Event> items = events.getItems();
