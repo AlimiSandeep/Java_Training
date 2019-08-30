@@ -39,8 +39,8 @@ public class InputController {
 		if(flag)
 			return "Successfully created event";
 		else
-			return "Not success";
-
+			return "Already exists \n Availaible slots are ::"+"\n"+availableSlots;
+//
 //		mv.addObject("flag", flag);
 //		mv.addObject("list", availableSlots);
 //
