@@ -11,7 +11,7 @@ public class EntityMentionsExample {
 
 	public static void main(String[] args) {
 		EntityMentionsExample example=new EntityMentionsExample();
-		String name=example.getName("Make an appointment with doctor");
+		String name=example.getName("get me available slots of  doctor sachin joshi on 1st dec"); 
 		System.out.println(name);
 	}
 	

@@ -78,11 +78,13 @@ public class SUTimeDemo {
 	}
 
 	public static void main(String[] args) {
+
 		SUTimeDemo demo = new SUTimeDemo();
 		System.out.println(demo.getDate("Book an appointment with doctor sachin on 25th nov"));
 		System.out.println(demo.getTime("Book an appointment with doctor sachin at 10am"));
 		System.out.println(demo.getDate("Book an appointment with doctor sachin on 25th nov at 10am"));
 		System.out.println(demo.getTime("Book an appointment with doctor sachin on 25th nov"));
+		System.out.println(demo.getDate("get me available slots of doctor sachin on 1st dec"));
 	}
 
 }

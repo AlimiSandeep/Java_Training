@@ -8,7 +8,8 @@ public class Test1 {
 	public static void main(String a[]) {
 		try {
 
-			ProcessBuilder pb = new ProcessBuilder("python3.6", "test1.py", "get me details of sachin");
+//			ProcessBuilder pb = new ProcessBuilder("python3.6", "test1.py", "get me details of sachin");
+			ProcessBuilder pb = new ProcessBuilder("python3.6", "/home/sandeepa/My Data/source_code/restflask.py");
 			Process p = pb.start();
 
 			BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
